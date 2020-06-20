@@ -94,9 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				54778009249EA6CD00A6CB40 /* AppDelegate.swift */,
-				54778012249EA6CD00A6CB40 /* Assets.xcassets */,
-				54778014249EA6CD00A6CB40 /* LaunchScreen.storyboard */,
-				54778017249EA6CD00A6CB40 /* Info.plist */,
+				54778039249EA8E400A6CB40 /* SupportingFiles */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -117,6 +115,16 @@
 				5477802D249EA6CD00A6CB40 /* Info.plist */,
 			);
 			path = TicTacToeUITests;
+			sourceTree = "<group>";
+		};
+		54778039249EA8E400A6CB40 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				54778012249EA6CD00A6CB40 /* Assets.xcassets */,
+				54778014249EA6CD00A6CB40 /* LaunchScreen.storyboard */,
+				54778017249EA6CD00A6CB40 /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
