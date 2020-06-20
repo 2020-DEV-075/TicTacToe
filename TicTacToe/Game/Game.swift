@@ -14,6 +14,8 @@ struct Game {
     private(set) var currentPlayer: Player
     private(set) var status: GameStatusInfo?
     
+    var overallPlayedPositions = Set<String>()
+    
     //MARK:- Init
     
     init() {
@@ -29,6 +31,13 @@ struct Game {
     //MARK:- Game play Methods
     
     public mutating func play(_ position: String) {
+        guard !overallPlayedPositions.contains(position) else {
+            status = .alreadyPlayed
+            return
+        }
+        
+        overallPlayedPositions.insert(position)
+        
         toggleCurrentPlayer()
     }
  
