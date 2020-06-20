@@ -10,6 +10,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController" customModule="TicTacToe" customModuleProvider="target">
             <connections>
                 <outlet property="infoLabel" destination="ggV-X1-qjJ" id="Flt-4g-cGi"/>
+                <outlet property="rowOneStackView" destination="dIz-I9-YPj" id="9P3-XQ-nMO"/>
+                <outlet property="rowThreeStackView" destination="B3v-Se-a2k" id="RiP-ZV-N4k"/>
+                <outlet property="rowTwoStackView" destination="c52-Np-c3Y" id="lyv-Ec-vTY"/>
                 <outlet property="tilesHolderStackView" destination="UC9-rL-CA3" id="6CN-l4-1X1"/>
                 <outlet property="tilesView" destination="Rxz-vy-dE5" id="UYr-GI-UEA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -44,6 +47,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="11"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="tileAction:" destination="-1" eventType="touchUpInside" id="4am-Ic-9bo"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfN-U2-bWQ">
                                             <rect key="frame" x="99.5" y="0.0" width="92" height="131.5"/>
@@ -51,6 +57,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="tileAction:" destination="-1" eventType="touchUpInside" id="3Ve-53-gQn"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDA-6i-Qim">
                                             <rect key="frame" x="198.5" y="0.0" width="92.5" height="131.5"/>
@@ -58,6 +67,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="13"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="tileAction:" destination="-1" eventType="touchUpInside" id="5C5-xB-UX5"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
@@ -70,6 +82,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="tileAction:" destination="-1" eventType="touchUpInside" id="0bZ-Lr-F97"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ant-Nr-f3z">
                                             <rect key="frame" x="99.5" y="0.0" width="92" height="131"/>
@@ -77,6 +92,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="tileAction:" destination="-1" eventType="touchUpInside" id="oOU-wv-F0m"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1c-QV-pc1">
                                             <rect key="frame" x="198.5" y="0.0" width="92.5" height="131"/>
@@ -84,6 +102,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="23"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="tileAction:" destination="-1" eventType="touchUpInside" id="cEa-Cs-H6s"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
@@ -96,6 +117,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="31"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="tileAction:" destination="-1" eventType="touchUpInside" id="hsU-pR-etz"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NjK-Qa-4fH">
                                             <rect key="frame" x="99.5" y="0.0" width="92" height="131.5"/>
@@ -103,6 +127,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="32"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="tileAction:" destination="-1" eventType="touchUpInside" id="jok-xJ-V3I"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZE-mI-DOn">
                                             <rect key="frame" x="198.5" y="0.0" width="92.5" height="131.5"/>
@@ -110,6 +137,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="33"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="tileAction:" destination="-1" eventType="touchUpInside" id="TQf-f8-Ukf"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
