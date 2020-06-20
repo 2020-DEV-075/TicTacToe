@@ -47,46 +47,46 @@ class GameTests: XCTestCase {
     }
 
     func testWinDiagonal() {
-        game.play("11")
-        game.play("21")
-        game.play("22")
-        game.play("31")
-        game.play("33")
-        let result = game.status
+        game?.play("11")
+        game?.play("21")
+        game?.play("22")
+        game?.play("31")
+        game?.play("33")
+        let result = game?.status
         XCTAssertEqual(result, .won)
     }
 
     func testWinHorizontal() {
-        game.play("11")
-        game.play("21")
-        game.play("12")
-        game.play("31")
-        game.play("13")
-        let result = game.status
+        game?.play("11")
+        game?.play("21")
+        game?.play("12")
+        game?.play("31")
+        game?.play("13")
+        let result = game?.status
         XCTAssertEqual(result, .won)
     }
 
     func testWinVertical() {
-        game.play("11")
-        game.play("12")
-        game.play("21")
-        game.play("33")
-        game.play("31")
-        let result = game.status
+        game?.play("11")
+        game?.play("12")
+        game?.play("21")
+        game?.play("33")
+        game?.play("31")
+        let result = game?.status
         XCTAssertEqual(result, .won)
     }
 
     func testDraw() {
-        game.play("31")
-        game.play("21")
-        game.play("12")
-        game.play("11")
-        game.play("22")
-        game.play("32")
-        game.play("33")
-        game.play("13")
-        game.play("23")
-        let result = game.status
+        game?.play("31")
+        game?.play("21")
+        game?.play("12")
+        game?.play("11")
+        game?.play("22")
+        game?.play("32")
+        game?.play("33")
+        game?.play("13")
+        game?.play("23")
+        let result = game?.status
         XCTAssertEqual(result, .draw)
     }
 
