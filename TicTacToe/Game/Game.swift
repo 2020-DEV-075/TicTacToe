@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+
+struct Game {
+    
+    private(set) var currentPlayer: Player
+    private(set) var status: GameStatusInfo?
+    
+    init() {
+        currentPlayer = .playerX
+    }
+    
+    
+ 
+}

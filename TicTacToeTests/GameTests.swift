@@ -22,7 +22,7 @@ class GameTests: XCTestCase {
     }
 
     func testInitialPlayer() {
-        let result = game.currentPlayer
+        let result = game?.currentPlayer
         XCTAssertEqual(result, .playerX)
     }
     
