@@ -14,10 +14,22 @@ struct Game {
     private(set) var currentPlayer: Player
     private(set) var status: GameStatusInfo?
     
+    //MARK:- Init
+    
     init() {
         currentPlayer = .playerX
     }
     
+    //MARK:- Game play helper Methods
     
+    private mutating func toggleCurrentPlayer() {
+        currentPlayer = currentPlayer == .playerX ? .playerO : .playerX
+    }
+    
+    //MARK:- Game play Methods
+    
+    public mutating func play(_ position: String) {
+        toggleCurrentPlayer()
+    }
  
 }
