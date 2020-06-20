@@ -14,6 +14,7 @@
 		5477802C249EA6CD00A6CB40 /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477802B249EA6CD00A6CB40 /* TicTacToeUITests.swift */; };
 		5477806E249EAB9000A6CB40 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477806C249EAB9000A6CB40 /* GameViewController.swift */; };
 		5477806F249EAB9000A6CB40 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5477806D249EAB9000A6CB40 /* GameViewController.xib */; };
+		547780A3249EB43900A6CB40 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547780A2249EB43900A6CB40 /* UIStackView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		5477802D249EA6CD00A6CB40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5477806C249EAB9000A6CB40 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5477806D249EAB9000A6CB40 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		547780A2249EB43900A6CB40 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				54778009249EA6CD00A6CB40 /* AppDelegate.swift */,
 				54778070249EAB9500A6CB40 /* Game */,
 				54778039249EA8E400A6CB40 /* SupportingFiles */,
+				547780A4249EB43F00A6CB40 /* Extensions */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -139,6 +142,14 @@
 				5477806D249EAB9000A6CB40 /* GameViewController.xib */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		547780A4249EB43F00A6CB40 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				547780A2249EB43900A6CB40 /* UIStackView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547780A3249EB43900A6CB40 /* UIStackView+Extensions.swift in Sources */,
 				5477806E249EAB9000A6CB40 /* GameViewController.swift in Sources */,
 				5477800A249EA6CD00A6CB40 /* AppDelegate.swift in Sources */,
 			);

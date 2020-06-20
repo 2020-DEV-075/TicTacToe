@@ -25,6 +25,20 @@ final class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupUI()
     }
     
+    private func setupUI() {
+        self.navigationItem.title = "TicTacToe"
+        
+        let restartGameBarButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(replayButtonTapped))
+        self.navigationItem.rightBarButtonItem = restartGameBarButton
+        
+        tilesHolderStackView.addBackground(color: .black)
+    }
+    
+    @objc func replayButtonTapped() {
+        
+    }
+
 }
