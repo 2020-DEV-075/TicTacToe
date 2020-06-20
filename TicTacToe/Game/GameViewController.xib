@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController" customModule="TicTacToe" customModuleProvider="target">
             <connections>
+                <outlet property="infoLabel" destination="ggV-X1-qjJ" id="Flt-4g-cGi"/>
                 <outlet property="tilesHolderStackView" destination="UC9-rL-CA3" id="6CN-l4-1X1"/>
                 <outlet property="tilesView" destination="Rxz-vy-dE5" id="UYr-GI-UEA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

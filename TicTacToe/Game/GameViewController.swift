@@ -21,7 +21,8 @@ final class GameViewController: UIViewController {
     @IBOutlet weak var tilesView: UIView!
     @IBOutlet weak var tilesHolderStackView: UIStackView!
     @IBOutlet var tileButtons: [UIButton]!
-
+    @IBOutlet weak var infoLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
