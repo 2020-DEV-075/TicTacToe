@@ -10,7 +10,10 @@ import UIKit
 
 final class GameViewController: UIViewController {
     
-    init() {
+    private var game: Game
+    
+    init(game: Game) {
+        self.game = game
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,9 +40,15 @@ final class GameViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        setDelegate()
+        updateInfoLabel(game.currentPlayer, status: game.status)
     }
     
-    //MARK:- Methods
+    //MARK:- UI Methods
+    
+    private func setDelegate() {
+        game.delegate = self
+    }
     
     private func setupUI() {
         self.navigationItem.title = "TicTacToe"
@@ -50,14 +59,76 @@ final class GameViewController: UIViewController {
         tilesHolderStackView.addBackground(color: .black)
     }
     
+    private func updateInfoLabel(_ player: Player, status: GameStatusInfo?) {
+        let playerName = player == .playerX ? "Player X" : "Player O"
+        infoLabel.text = "\(playerName)'s turn!"
+    }
+    
+    private func updateWinDrawUI(_ player: Player, status: GameStatusInfo?, gamePositions: Set<String>) {
+        switch status {
+        case .won:
+            updateTilesForWin(positions: gamePositions)
+            let playerName = player == .playerX ? "Player X" : "Player O"
+            infoLabel.text = "\(playerName) has won the game"
+        case .draw:
+            updateTilesForDraw()
+            infoLabel.text = "Game draw!"
+        default:
+            break
+        }
+    }
+    
+    private func updateTilesForWin(positions: Set<String>) {
+        positions.forEach { (position) in
+            let tile = tileButtons.first(where: { $0.accessibilityIdentifier == position })
+            tile?.backgroundColor = .green
+        }
+    }
+    
+    private func updateTilesForDraw() {
+        tileButtons.forEach { (tile) in
+            tile.backgroundColor = .yellow
+        }
+    }
+    
+    private func reset() {
+        game.reset()
+        tileButtons.forEach { (tile) in
+            tile.backgroundColor = .white
+            tile.setTitle("", for: .normal)
+        }
+        updateInfoLabel(game.currentPlayer, status: game.status)
+    }
+    
     //MARK:- Actions
     
     @objc func replayButtonTapped() {
-        
+        reset()
     }
     
     @IBAction func tileAction(_ sender: UIButton) {
+        guard let tileId = sender.accessibilityIdentifier else { return }
+        game.play(tileId)
+    }
+}
+
+//MARK:- Delegate
+
+extension GameViewController: GameControlDelegate {
+    func gameStatus(player: Player, status: GameStatusInfo?, gamePositions: Set<String>) {
+        if let status = status, status == .draw || status == .won {
+            updateWinDrawUI(player, status: status, gamePositions: gamePositions)
+            return
+        }
+        
+        updateInfoLabel(player, status: status)
     }
     
-
+    func markMove(position: String, player: Player, status: GameStatusInfo?) {
+        guard let tile = tileButtons.first(where: { $0.accessibilityIdentifier == position }) else { fatalError() }
+        guard status != .alreadyPlayed else { return }
+        
+        let tileMark = player == .playerX ? "X" : "O"
+        tile.setTitle(tileMark, for: .normal)
+    }
 }

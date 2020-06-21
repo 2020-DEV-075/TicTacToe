@@ -20,6 +20,8 @@ class GameTests: XCTestCase {
     override func tearDown() {
         game = nil
     }
+    
+    //MARK:- Current player tests
 
     func testInitialPlayer() {
         let result = game?.currentPlayer
@@ -39,14 +41,18 @@ class GameTests: XCTestCase {
         XCTAssertEqual(result, .playerX)
     }
     
+    //MARK:- Already played position tests
+    
     func testMoveOnAlreadyPlayedPosition() {
         game?.play("11")
         game?.play("11")
         let result = game?.status
         XCTAssertEqual(result, .alreadyPlayed)
     }
+    
+    //MARK:- PlayerX win tests
 
-    func testWinDiagonal() {
+    func testPlayerXWinDiagonal() {
         game?.play("11")
         game?.play("21")
         game?.play("22")
@@ -54,9 +60,12 @@ class GameTests: XCTestCase {
         game?.play("33")
         let result = game?.status
         XCTAssertEqual(result, .won)
+        
+        let currentPlayer = game?.currentPlayer
+        XCTAssertEqual(currentPlayer, .playerX)
     }
 
-    func testWinHorizontal() {
+    func testPlayerXWinHorizontal() {
         game?.play("11")
         game?.play("21")
         game?.play("12")
@@ -64,9 +73,12 @@ class GameTests: XCTestCase {
         game?.play("13")
         let result = game?.status
         XCTAssertEqual(result, .won)
+        
+        let currentPlayer = game?.currentPlayer
+        XCTAssertEqual(currentPlayer, .playerX)
     }
 
-    func testWinVertical() {
+    func testPlayerXWinVertical() {
         game?.play("11")
         game?.play("12")
         game?.play("21")
@@ -74,7 +86,56 @@ class GameTests: XCTestCase {
         game?.play("31")
         let result = game?.status
         XCTAssertEqual(result, .won)
+        
+        let currentPlayer = game?.currentPlayer
+        XCTAssertEqual(currentPlayer, .playerX)
     }
+    
+    //MARK:- PlayerO win tests
+    
+    func testPlayerOWinDiagonal() {
+        game?.play("21")
+        game?.play("11")
+        game?.play("31")
+        game?.play("22")
+        game?.play("13")
+        game?.play("33")
+        let result = game?.status
+        XCTAssertEqual(result, .won)
+        
+        let currentPlayer = game?.currentPlayer
+        XCTAssertEqual(currentPlayer, .playerO)
+    }
+
+    func testPlayerOWinHorizontal() {
+        game?.play("21")
+        game?.play("11")
+        game?.play("31")
+        game?.play("12")
+        game?.play("32")
+        game?.play("13")
+        let result = game?.status
+        XCTAssertEqual(result, .won)
+        
+        let currentPlayer = game?.currentPlayer
+        XCTAssertEqual(currentPlayer, .playerO)
+    }
+
+    func testPlayerOWinVertical() {
+        game?.play("12")
+        game?.play("11")
+        game?.play("33")
+        game?.play("21")
+        game?.play("32")
+        game?.play("31")
+        let result = game?.status
+        XCTAssertEqual(result, .won)
+        
+        let currentPlayer = game?.currentPlayer
+        XCTAssertEqual(currentPlayer, .playerO)
+    }
+    
+    //MARK:- Draw tests
 
     func testDraw() {
         game?.play("31")
