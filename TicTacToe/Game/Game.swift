@@ -14,12 +14,12 @@ struct Game {
     private(set) var currentPlayer: Player
     private(set) var status: GameStatusInfo?
     
-    var overallPlayedPositions = Set<String>()
+    private var overallPlayedPositions = Set<String>()
     
-    var playerXMoves = Set<String>()
-    var playerOMoves = Set<String>()
+    private var playerXMoves = Set<String>()
+    private var playerOMoves = Set<String>()
     
-    let possibleWinPositions = [["11","21","31"],["12","22","32"],["13","23","33"],["11","12","13"],["21","22","23"],["31","32","33"],["11","22","33"],["13","22","31"]]
+    private let possibleWinPositions = [["11","21","31"],["12","22","32"],["13","23","33"],["11","12","13"],["21","22","23"],["31","32","33"],["11","22","33"],["13","22","31"]]
     
     //MARK:- Init
     
