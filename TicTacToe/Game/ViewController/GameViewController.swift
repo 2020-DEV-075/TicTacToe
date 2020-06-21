@@ -60,12 +60,35 @@ final class GameViewController: UIViewController {
     }
     
     private func updateInfoLabel(_ player: Player, status: GameStatusInfo?) {
-        if let status = status, status == .draw || status == .won {
-            
-        }
-        
         let playerName = player == .playerX ? "Player X" : "Player O"
         infoLabel.text = "\(playerName)'s turn!"
+    }
+    
+    private func updateWinDrawUI(_ player: Player, status: GameStatusInfo?, gamePositions: Set<String>) {
+        switch status {
+        case .won:
+            updateTilesForWin(positions: gamePositions)
+            let playerName = player == .playerX ? "Player X" : "Player O"
+            infoLabel.text = "\(playerName) has won the game"
+        case .draw:
+            updateTilesForDraw()
+            infoLabel.text = "Game draw!"
+        default:
+            break
+        }
+    }
+    
+    private func updateTilesForWin(positions: Set<String>) {
+        positions.forEach { (position) in
+            let tile = tileButtons.first(where: { $0.accessibilityIdentifier == position })
+            tile?.backgroundColor = .green
+        }
+    }
+    
+    private func updateTilesForDraw() {
+        tileButtons.forEach { (tile) in
+            tile.backgroundColor = .yellow
+        }
     }
     
     //MARK:- Actions
@@ -82,6 +105,11 @@ final class GameViewController: UIViewController {
 
 extension GameViewController: GameControlDelegate {
     func gameStatus(player: Player, status: GameStatusInfo?, gamePositions: Set<String>) {
+        if let status = status, status == .draw || status == .won {
+            updateWinDrawUI(player, status: status, gamePositions: gamePositions)
+            return
+        }
+        
         updateInfoLabel(player, status: status)
     }
     
