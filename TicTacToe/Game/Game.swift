@@ -63,7 +63,9 @@ struct Game {
                 status = .won
                 return
             }
-            
+        }
+        
+        if status != .won {
             if overallPlayedPositions.count == 9 {
                 status = .draw
                 return
