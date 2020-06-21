@@ -12,6 +12,7 @@ enum GameStatusInfo {
     case won
     case draw
     case alreadyPlayed
+    case markMove
     case nextMove
     case gameOver
 }

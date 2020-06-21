@@ -21,6 +21,8 @@ struct Game {
     
     private let possibleWinPositions = [["11","21","31"],["12","22","32"],["13","23","33"],["11","12","13"],["21","22","23"],["31","32","33"],["11","22","33"],["13","22","31"]]
     
+    var delegate: GameControlDelegate?
+    
     //MARK:- Init
     
     init() {
@@ -34,6 +36,7 @@ struct Game {
     }
     
     private mutating func addPlayerMove(_ position: String) {
+        status = .markMove
         overallPlayedPositions.insert(position)
         
         switch currentPlayer {
@@ -42,6 +45,8 @@ struct Game {
         case .playerO:
             playerOMoves.insert(position)
         }
+        
+        delegate?.markMove(position: position, player: currentPlayer, status: status)
     }
     
     private mutating func checkGameStatus() {
@@ -79,6 +84,7 @@ struct Game {
     public mutating func play(_ position: String) {
         guard !overallPlayedPositions.contains(position) else {
             status = .alreadyPlayed
+            delegate?.markMove(position: position, player: currentPlayer, status: status)
             return
         }
         
@@ -87,3 +93,10 @@ struct Game {
     }
  
 }
+
+//MARK:- Game Protocol
+
+protocol GameControlDelegate {
+    func markMove(position: String, player: Player, status: GameStatusInfo?)
+}
+
