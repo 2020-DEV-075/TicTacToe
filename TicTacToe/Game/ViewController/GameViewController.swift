@@ -44,7 +44,7 @@ final class GameViewController: UIViewController {
         updateInfoLabel(game.currentPlayer, status: game.status)
     }
     
-    //MARK:- Methods
+    //MARK:- UI Methods
     
     private func setDelegate() {
         game.delegate = self
@@ -91,10 +91,19 @@ final class GameViewController: UIViewController {
         }
     }
     
+    private func reset() {
+        game.reset()
+        tileButtons.forEach { (tile) in
+            tile.backgroundColor = .white
+            tile.setTitle("", for: .normal)
+        }
+        updateInfoLabel(game.currentPlayer, status: game.status)
+    }
+    
     //MARK:- Actions
     
     @objc func replayButtonTapped() {
-        
+        reset()
     }
     
     @IBAction func tileAction(_ sender: UIButton) {
@@ -102,6 +111,8 @@ final class GameViewController: UIViewController {
         game.play(tileId)
     }
 }
+
+//MARK:- Delegate
 
 extension GameViewController: GameControlDelegate {
     func gameStatus(player: Player, status: GameStatusInfo?, gamePositions: Set<String>) {

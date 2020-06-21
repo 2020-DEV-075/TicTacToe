@@ -97,6 +97,14 @@ struct Game {
         addPlayerMove(position)
         checkGameStatus()
     }
+    
+    public mutating func reset() {
+        currentPlayer = .playerX
+        status = nil
+        overallPlayedPositions = []
+        playerOMoves = []
+        playerXMoves = []
+    }
  
 }
 
