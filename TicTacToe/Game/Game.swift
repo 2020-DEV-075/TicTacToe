@@ -54,18 +54,20 @@ struct Game {
         
         //If a user has less than 3 moves, they have no chance of win, so we return and ask for nextMove
         guard playerMoves.count >= 3 else {
-            status = .nextMove
             toggleCurrentPlayer()
+            status = .nextMove
+            delegate?.gameStatus(player: currentPlayer, status: status, gamePositions: overallPlayedPositions)
             return
         }
         
         
         possibleWinPositions.forEach { (possibleWinPosition) in
-            let commonElements = possibleWinPosition.filter(playerMoves.contains)
+            let commonElements = Set(possibleWinPosition.filter(playerMoves.contains))
             
             let didWin = commonElements.count == 3
             if didWin {
                 status = .won
+                delegate?.gameStatus(player: currentPlayer, status: status, gamePositions: commonElements)
                 return
             }
         }
@@ -73,9 +75,13 @@ struct Game {
         if status != .won {
             if overallPlayedPositions.count == 9 {
                 status = .draw
+                delegate?.gameStatus(player: currentPlayer, status: status, gamePositions: overallPlayedPositions)
                 return
             }
+            
+            status = .nextMove
             toggleCurrentPlayer()
+            delegate?.gameStatus(player: currentPlayer, status: status, gamePositions: overallPlayedPositions)
         }
     }
     
@@ -98,5 +104,6 @@ struct Game {
 
 protocol GameControlDelegate {
     func markMove(position: String, player: Player, status: GameStatusInfo?)
+    func gameStatus(player: Player, status: GameStatusInfo?, gamePositions: Set<String>)
 }
 

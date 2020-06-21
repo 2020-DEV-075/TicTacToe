@@ -41,6 +41,7 @@ final class GameViewController: UIViewController {
 
         setupUI()
         setDelegate()
+        updateInfoLabel(game.currentPlayer, status: game.status)
     }
     
     //MARK:- Methods
@@ -58,6 +59,15 @@ final class GameViewController: UIViewController {
         tilesHolderStackView.addBackground(color: .black)
     }
     
+    private func updateInfoLabel(_ player: Player, status: GameStatusInfo?) {
+        if let status = status, status == .draw || status == .won {
+            
+        }
+        
+        let playerName = player == .playerX ? "Player X" : "Player O"
+        infoLabel.text = "\(playerName)'s turn!"
+    }
+    
     //MARK:- Actions
     
     @objc func replayButtonTapped() {
@@ -71,8 +81,11 @@ final class GameViewController: UIViewController {
 }
 
 extension GameViewController: GameControlDelegate {
+    func gameStatus(player: Player, status: GameStatusInfo?, gamePositions: Set<String>) {
+        updateInfoLabel(player, status: status)
+    }
+    
     func markMove(position: String, player: Player, status: GameStatusInfo?) {
-        
         guard let tile = tileButtons.first(where: { $0.accessibilityIdentifier == position }) else { fatalError() }
         guard status != .alreadyPlayed else { return }
         
