@@ -10,7 +10,10 @@ import UIKit
 
 final class GameViewController: UIViewController {
     
-    init() {
+    private let game: Game
+    
+    init(game: Game) {
+        self.game = game
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,6 +60,7 @@ final class GameViewController: UIViewController {
     }
     
     @IBAction func tileAction(_ sender: UIButton) {
+        
     }
     
 
