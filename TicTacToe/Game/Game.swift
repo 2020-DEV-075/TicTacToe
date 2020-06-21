@@ -52,14 +52,13 @@ struct Game {
     private mutating func checkGameStatus() {
         let playerMoves = currentPlayer == .playerX ? playerXMoves : playerOMoves
         
-        //If a user has less than 3 moves, they have no chance of win, so we return and ask for nextMove
+        //If a user has less than 3 moves, they have no chance of winning so we return.
         guard playerMoves.count >= 3 else {
             toggleCurrentPlayer()
             status = .nextMove
             delegate?.gameStatus(player: currentPlayer, status: status, gamePositions: overallPlayedPositions)
             return
         }
-        
         
         possibleWinPositions.forEach { (possibleWinPosition) in
             let commonElements = Set(possibleWinPosition.filter(playerMoves.contains))
@@ -85,7 +84,7 @@ struct Game {
         }
     }
     
-    //MARK:- Game play Methods
+    //MARK:- Game play Public Methods
     
     public mutating func play(_ position: String) {
         guard !overallPlayedPositions.contains(position) else {
