@@ -10,7 +10,7 @@ import UIKit
 
 final class GameViewController: UIViewController {
     
-    private let game: Game
+    private var game: Game
     
     init(game: Game) {
         self.game = game
@@ -40,9 +40,14 @@ final class GameViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        setDelegate()
     }
     
     //MARK:- Methods
+    
+    private func setDelegate() {
+        game.delegate = self
+    }
     
     private func setupUI() {
         self.navigationItem.title = "TicTacToe"
@@ -60,8 +65,18 @@ final class GameViewController: UIViewController {
     }
     
     @IBAction func tileAction(_ sender: UIButton) {
-        
+        guard let tileId = sender.accessibilityIdentifier else { return }
+        game.play(tileId)
     }
-    
+}
 
+extension GameViewController: GameControlDelegate {
+    func markMove(position: String, player: Player, status: GameStatusInfo?) {
+        
+        guard let tile = tileButtons.first(where: { $0.accessibilityIdentifier == position }) else { fatalError() }
+        guard status != .alreadyPlayed else { return }
+        
+        let tileMark = player == .playerX ? "X" : "O"
+        tile.setTitle(tileMark, for: .normal)
+    }
 }
